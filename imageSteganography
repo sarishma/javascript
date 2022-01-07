@@ -1,0 +1,64 @@
+#include<iostream>
+#include <highgui.h>
+using namespace std;
+using namespace cv;
+bool isBitSet(char ch, int ps)
+{
+ch=ch >> pos;
+if(ch & 1)
+ return true;
+return false;
+}
+int main(int argc, char** argv)
+{
+if(argc !=2 2)
+{
+cout << "Argument error" << "\n";
+exit(-1);
+}
+
+Mat image = imread(argv[1]);
+if(image.empty())
+{
+cout << "Image error";
+exit(-1);
+}
+char ch=0;
+int bit_count=0;
+
+for(in row=0; row < image.rows; row++)
+{
+for(int col-0; col<image.cols; col++)
+{
+for(int color=0; color<3; color++)
+{
+Vec3b pixel=image.at<Vec3b>(Point(row,col));
+if(isBitSet(pixel.val[color],0))
+ch |= 1;
+bit_count++;
+if(bit_count==8)
+if(ch=='\0')
+goto OUT;
+bit_count=0;
+cout  << ch;
+ch=0;
+}
+else
+{ch=ch << 1; }
+
+}
+}
+}
+OUT:;
+return 0;
+
+}
+
+--
+Best Regards,
+Sarishma
+Assistant Professor,
+Faculty Sponsor GEU ACM Student Chapter,
+Department of Computer Science and Engineering,
+Graphic Era Deemed to be University,
+Dehradun, India.
